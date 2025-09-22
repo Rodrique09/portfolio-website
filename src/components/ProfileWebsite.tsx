@@ -81,7 +81,7 @@ const ProfileWebsite = () => {
       title: "Email Virus Scanner",
       description: "A Make.com automation that uses VirusTotal API to check if any URL mentioned inside emails is legitimate or contains scams/viruses",
       tech: "Make.com, VirusTotal API, Email Processing, URL Analysis",
-      image: "/lovable-uploads/3ac7ad55-b27e-4518-b331-effe5ffef508.png",
+      image: "Virustotal.png",
       link: "#",
       isImageProject: true
     }
