@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
+import panthPortrait from "@/assets/panth-portrait.jpg";
 
 const ProfileWebsite = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -113,36 +114,42 @@ const ProfileWebsite = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+  e.preventDefault();
+  const formData = new FormData(e.currentTarget);
+  const form = e.currentTarget; // Store form reference
+  
+  try {
+    await fetch("https://hook.us2.make.com/wc2vpn7aof56pag5459ildqn48inxr0f", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: formData.get("name"),
+        email: formData.get("email"),
+        message: formData.get("message"),
+        timestamp: new Date().toISOString(),
+      }),
+    });
     
-    try {
-      await fetch("https://hook.us2.make.com/wc2vpn7aof56pag5459ildqn48inxr0f", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.get("name"),
-          email: formData.get("email"),
-          message: formData.get("message"),
-          timestamp: new Date().toISOString(),
-        }),
-      });
-         // Clear the form after successful submission
-    e.currentTarget.reset();
-      toast({
-        title: "Message sent!",
-        description: "Thanks for reaching out. I'll get back to you soon.",
-      });
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "Failed to send message. Please try again.",
-        variant: "destructive",
-      });
-    }
-  };
+    toast({
+      title: "Message sent!",
+      description: "Thanks for reaching out. I'll get back to you soon.",
+    });
+    
+    // ✅ Clear the form after a tiny delay
+    setTimeout(() => {
+      form.reset();
+    }, 100);
+    
+  } catch (error) {
+    toast({
+      title: "Error",
+      description: "Failed to send message. Please try again.",
+      variant: "destructive",
+    });
+  }
+};
 
   return (
     <div className="min-h-screen bg-background">
