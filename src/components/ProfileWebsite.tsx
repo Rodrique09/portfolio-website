@@ -21,7 +21,6 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
-import panthPortrait from "@/assets/panth-portrait.jpg";
 
 const ProfileWebsite = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -130,7 +129,8 @@ const ProfileWebsite = () => {
           timestamp: new Date().toISOString(),
         }),
       });
-      
+         // Clear the form after successful submission
+    e.currentTarget.reset();
       toast({
         title: "Message sent!",
         description: "Thanks for reaching out. I'll get back to you soon.",
