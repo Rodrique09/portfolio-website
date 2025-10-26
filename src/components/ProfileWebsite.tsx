@@ -21,7 +21,6 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
-import panthPortrait from "@/assets/panth-portrait.jpg";
 
 const ProfileWebsite = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
