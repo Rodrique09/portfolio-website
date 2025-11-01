@@ -4,20 +4,21 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { 
-  Menu, 
-  X, 
-  ChevronDown, 
-  Code, 
-  Zap, 
-  Database, 
-  Github, 
-  Linkedin, 
+import {
+  Menu,
+  X,
+  ChevronDown,
+  Code,
+  Zap,
+  Database,
+  Github,
+  Linkedin,
   Twitter,
   ExternalLink,
   Mail,
   Phone,
   MapPin
+, Server, Terminal, Wrench
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
@@ -37,36 +38,36 @@ const ProfileWebsite = () => {
 
   const skills = [
     {
+      icon: <Code className="w-8 h-8" />,
+      title: "React Development",
+      description: "Modern, component-based web applications"
+    },
+    {
       icon: <Zap className="w-8 h-8" />,
-      title: "Prompt Engineering",
-      description: "AI workflow optimization and intelligent automation"
+      title: "Make.com Automation",
+      description: "Complex workflows & integrations (Advanced Certified)"
     },
     {
-      icon: <Code className="w-8 h-8" />,
-      title: "Make.com",
-      description: "Complex automation and integration workflows"
-    },
-    {
-      icon: <Code className="w-8 h-8" />,
-      title: "lovable.dev & Vibecoding",
-      description: "No-code website development and rapid prototyping"
+      icon: <Server className="w-8 h-8" />,
+      title: "Node.js & Express",
+      description: "RESTful APIs and backend services"
     },
     {
       icon: <Database className="w-8 h-8" />,
-      title: "Supabase",
-      description: "Backend-as-a-service and database management"
+      title: "Full-Stack Integration",
+      description: "Connecting frontend, backend, and automation systems"
     },
     {
-      icon: <Code className="w-8 h-8" />,
-      title: "CRM and Command Line Interface",
-      description: "Customer relationship management and CLI automation"
+      icon: <Terminal className="w-8 h-8" />,
+      title: "CLI Development",
+      description: "Command-line tools and automation scripts"
     },
     {
-      icon: <Code className="w-8 h-8" />,
-      title: "Postman",
-      description: "API testing and development workflows"
+      icon: <Wrench className="w-8 h-8" />,
+      title: "API Testing & Development",
+      description: "Postman, debugging, and workflow optimization"
     }
-  ];
+  ]
 
   const projects = [
     {
@@ -113,42 +114,42 @@ const ProfileWebsite = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  const formData = new FormData(e.currentTarget);
-  const form = e.currentTarget; // Store form reference
-  
-  try {
-    await fetch("https://hook.us2.make.com/wc2vpn7aof56pag5459ildqn48inxr0f", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: formData.get("name"),
-        email: formData.get("email"),
-        message: formData.get("message"),
-        timestamp: new Date().toISOString(),
-      }),
-    });
-    
-    toast({
-      title: "Message sent!",
-      description: "Thanks for reaching out. I'll get back to you soon.",
-    });
-    
-    // ✅ Clear the form after a tiny delay
-    setTimeout(() => {
-      form.reset();
-    }, 100);
-    
-  } catch (error) {
-    toast({
-      title: "Error",
-      description: "Failed to send message. Please try again.",
-      variant: "destructive",
-    });
-  }
-};
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget; // Store form reference
+
+    try {
+      await fetch("https://hook.us2.make.com/wc2vpn7aof56pag5459ildqn48inxr0f", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          message: formData.get("message"),
+          timestamp: new Date().toISOString(),
+        }),
+      });
+
+      toast({
+        title: "Message sent!",
+        description: "Thanks for reaching out. I'll get back to you soon.",
+      });
+
+      // ✅ Clear the form after a tiny delay
+      setTimeout(() => {
+        form.reset();
+      }, 100);
+
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -157,7 +158,7 @@ const ProfileWebsite = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="text-xl font-bold text-gradient">Panth Patel</div>
-            
+
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-8">
               {navItems.map((item) => (
@@ -207,10 +208,10 @@ const ProfileWebsite = () => {
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
               I'm <span className="text-gradient">Panth Patel</span> —
               <br />
-              Prompt Engineer, Solutions Engineer & No-Code Developer
+              React Developer & No-Code Automation Developer
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
-              Building AI-driven workflows, low-code websites, and automations that transform business processes.
+              Building React applications and AI-powered automations with Make to streamline business workflows and boost productivity.
             </p>
             <Button
               onClick={() => scrollToSection("projects")}
@@ -221,7 +222,7 @@ const ProfileWebsite = () => {
               <ChevronDown className="ml-2 w-5 h-5" />
             </Button>
           </div>
-          
+
         </div>
       </section>
 
@@ -233,26 +234,28 @@ const ProfileWebsite = () => {
               <h2 className="text-4xl font-bold mb-8 text-gradient">About Me</h2>
               <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
                 <p>
-                  I'm a passionate Prompt Engineer, Solutions Engineer, and No-Code Developer with expertise in building 
-                  intelligent automation workflows that solve complex business challenges.
+                  I'm a React Developer and Make Advanced Certified Automation Specialist who crafts
+                  beautiful, performant web applications that users love and automation workflows that
+                  businesses rely on.
                 </p>
                 <p>
-                  My experience spans across Make.com integrations, Supabase backend development, 
-                  and advanced prompt engineering techniques that maximize AI potential for enterprise solutions.
+                  Specializing in modern React development, I build responsive, accessible interfaces using
+                  the latest tools and best practices—from React Hooks and Context to component libraries
+                  like Tailwind CSS. Every application I create prioritizes user experience and code quality.
                 </p>
                 <p>
-                  As a Solutions Engineer, I bridge the gap between technical complexity and business needs, 
-                  designing scalable automation architectures and implementing AI-driven workflows that 
-                  streamline operations and enhance productivity.
+                  My Make Advanced Certification allows me to extend frontend applications with intelligent
+                  automation, creating seamless integrations that handle complex workflows behind the scenes
+                  while maintaining a smooth, intuitive user interface.
                 </p>
                 <p>
-                  Through Vibecoding and lovable.dev, I create rapid prototypes and full-featured 
-                  applications, helping businesses transition into the no-code future while maintaining 
-                  enterprise-grade reliability and performance.
+                  Whether it's a customer-facing web application, an internal dashboard, or an automated
+                  workflow system, I combine React expertise with no-code automation to deliver fast,
+                  reliable solutions that scale with your business.
                 </p>
               </div>
             </div>
-            
+
             <div className="flex justify-center animate-scale-in">
               <Card className="card-gradient shadow-elegant border-border/20 max-w-md">
                 <CardContent className="p-8">
@@ -263,7 +266,7 @@ const ProfileWebsite = () => {
                     </div>
                     <div className="flex items-center gap-3">
                       <Code className="w-5 h-5 text-primary" />
-                      <span>1.5 year experience in tech-support and 1+ year building automations</span>
+                      <span>1.5 year experience in tech-support and 1+ year building websites and automations</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <Zap className="w-5 h-5 text-primary" />
@@ -283,7 +286,7 @@ const ProfileWebsite = () => {
           <h2 className="text-4xl font-bold text-center mb-16 text-gradient animate-fade-in">
             Core Skills & Tools
           </h2>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {skills.map((skill, index) => (
               <Card
@@ -310,7 +313,7 @@ const ProfileWebsite = () => {
           <h2 className="text-4xl font-bold text-center mb-16 text-gradient animate-fade-in">
             Featured Projects
           </h2>
-          
+
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {projects.map((project, index) => (
               <Card
@@ -331,8 +334,8 @@ const ProfileWebsite = () => {
                     {project.isImageProject ? (
                       <Dialog>
                         <DialogTrigger asChild>
-                          <Button 
-                            variant="outline" 
+                          <Button
+                            variant="outline"
                             className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-smooth"
                           >
                             View Project <ExternalLink className="ml-2 w-4 h-4" />
@@ -340,8 +343,8 @@ const ProfileWebsite = () => {
                         </DialogTrigger>
                         <DialogContent className="max-w-6xl w-full max-h-[90vh] overflow-hidden p-2">
                           <div className="flex items-center justify-center">
-                            <img 
-                              src={project.image} 
+                            <img
+                              src={project.image}
                               alt="Email Virus Scanner Automation Flow"
                               className="max-w-full max-h-full object-contain animate-scale-in rounded-lg"
                             />
@@ -349,8 +352,8 @@ const ProfileWebsite = () => {
                         </DialogContent>
                       </Dialog>
                     ) : (
-                      <Button 
-                        variant="outline" 
+                      <Button
+                        variant="outline"
                         className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-smooth"
                         onClick={() => window.open(project.link, '_blank')}
                       >
@@ -371,7 +374,7 @@ const ProfileWebsite = () => {
           <h2 className="text-4xl font-bold text-center mb-16 text-gradient animate-fade-in">
             Let's Connect
           </h2>
-          
+
           <div className="grid lg:grid-cols-2 gap-12">
             <Card className="card-gradient shadow-elegant border-border/20 animate-slide-up">
               <CardContent className="p-8">
