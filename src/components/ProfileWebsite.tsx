@@ -206,12 +206,12 @@ const ProfileWebsite = () => {
         <div className="max-w-4xl mx-auto text-center">
           <div className="animate-fade-in">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              I'm <span className="text-gradient">Panth Patel</span> —
+              I'm <span className="text-gradient">Panth Patel,</span>
               <br />
-              Senior Team Lead || Data Analyst
             </h1>
+            <h3>Senior Team Lead(Tech Support) ||Data Analyst || React Developer || Make.com Advanced Certified Automation Specialist</h3>
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
-              Building React applications and AI-powered automations with Make to streamline business workflows and boost productivity.
+              Building React apps and AI-powered automations with Make, turning raw data into clear insights through variance analysis, Excel and Power BI.
             </p>
             <Button
               onClick={() => scrollToSection("projects")}
