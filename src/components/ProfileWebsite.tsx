@@ -208,7 +208,7 @@ const ProfileWebsite = () => {
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
               I'm <span className="text-gradient">Panth Patel</span> —
               <br />
-              React Developer & No-Code Automation Developer
+              React Developer & Automation Developer
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
               Building React applications and AI-powered automations with Make to streamline business workflows and boost productivity.
